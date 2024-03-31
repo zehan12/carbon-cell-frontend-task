@@ -1,9 +1,13 @@
+import { SideBar } from "./components/Sidebar";
 import ApplicationRoutes from "./routes";
 
 const App = () => {
   return (
     <>
-      <ApplicationRoutes />
+      <div className="flex flex-col md:flex-row">
+        <SideBar />
+        <ApplicationRoutes />
+      </div>
     </>
   );
 };
