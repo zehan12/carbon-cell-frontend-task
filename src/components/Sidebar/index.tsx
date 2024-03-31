@@ -39,6 +39,7 @@ export const SideBar = () => {
           "hidden lg:block md:block h-screen p-5 transition-width duration-300 ease-in-out bg-zinc-900/95",
           isExpanded ? "w-20" : "w-80"
         )}
+        style={{ position: "sticky", top: 0 }}
       >
         <div className="flex justify-between items-center opacity-100 transition-opacity duration-300 ease-in-out">
           {!isExpanded && (
@@ -68,12 +69,12 @@ export const SideBar = () => {
             )}
           >
             <Search size={20} />
-            {isExpanded ? "" : <p className="text-sm">Search</p>}
+            {isExpanded ? "" : <div className="text-sm">Search</div>}
           </div>
           <div className="mt-8 space-y-4 cursor-pointer">
-            {menuItems.map((item, index) => (
+            {menuItems.map((item) => (
               <div
-                key={index}
+                key={item.label}
                 className={`flex gap-2 items-center w-full h-10  text-3xl text-gray-400 hover:bg-slate-300/25 rounded-md transition-width duration-300 ease-linear ${
                   isExpanded
                     ? "w-full justify-center"
@@ -84,7 +85,7 @@ export const SideBar = () => {
                 {isExpanded ? (
                   ""
                 ) : (
-                  <p className="w-full text-sm">{item.label}</p>
+                  <div className="w-full text-sm">{item.label}</div>
                 )}
               </div>
             ))}
@@ -94,15 +95,16 @@ export const SideBar = () => {
           <div className="flex flex-col gap-4 p-2 text-gray-300 text-md">
             {options.map((item) => (
               <div
+                key={item.name}
                 className={cn(
                   "flex justify-between cursor-pointer rounded-md hover:bg-zinc-600 p-2",
                   isExpanded ? "w-9" : "w-full"
                 )}
               >
-                <p className="flex justify-start gap-2">
+                <div className="flex justify-start gap-2">
                   <item.icon size={20} />
-                  {!isExpanded && <p>{item.name}</p>}
-                </p>
+                  {!isExpanded && <div>{item.name}</div>}
+                </div>
                 {item.current && (
                   <div
                     className={`w-2 h-2 rounded-full bg-lime-500 ${
@@ -165,9 +167,9 @@ export const SideBar = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
@@ -180,7 +182,7 @@ export const SideBar = () => {
           >
             <ul className="font-medium flex flex-col justify-center gap-3 p-4 md:p-0 mt-4 border rounded-lg bg-gray-900 border-gray-700">
               {menuItems.map((item) => (
-                <li>
+                <li key={item.label}>
                   <a
                     href="#"
                     className="flex items-center gap-3 py-2 pl-3 pr-4 hover:bg-zinc-600 text-white rounded"
