@@ -106,12 +106,18 @@ const CryptoCurrency = () => {
                           BTC
                         </h3>
                         <h4>{data.code}</h4>
-                        <h1 className="font-semibold text-xl text-gray-700">
+                        <h4 className="font-semibold text-xl text-gray-700">
                           <span
                             dangerouslySetInnerHTML={{ __html: data?.symbol }}
                           ></span>{" "}
                           {data.rate}
-                        </h1>
+                        </h4>
+                        <h5 className="text-sm font-semibold">
+                          Float Rate:{" "}
+                          <span className="text-green-500 font-normal">
+                            {" " + data.rate_float}
+                          </span>
+                        </h5>
                       </div>
                     </div>
                   ))}
