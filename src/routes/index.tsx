@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ROUTE from "../constants/routes";
+import { Population } from "../components";
 
 const ApplicationRoutes: FC = () => {
   return (
@@ -15,7 +16,7 @@ const ApplicationRoutes: FC = () => {
             </div>
           }
         />
-        <Route path={ROUTE.POPULATION} element={<h1>population</h1>} />
+        <Route path={ROUTE.POPULATION} element={<Population />} />
         <Route path={ROUTE.CRYPTOCURRENCY} element={<h1>Cryptocurrency</h1>} />
       </Routes>
     </>

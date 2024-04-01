@@ -11,8 +11,10 @@ import {
   Wallet,
 } from "lucide-react";
 import { cn } from "../../utils/general.utils";
+import { NavLink, useLocation } from "react-router-dom";
 
-export const SideBar = () => {
+const SideBar = () => {
+  const location = useLocation();
   const [isExpanded, setExpanded] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const handleToggle = () => {
@@ -20,10 +22,18 @@ export const SideBar = () => {
   };
 
   const menuItems = [
-    { icon: <Home />, label: "Home" },
-    { icon: <AreaChart size={28} />, label: "Graph Population" },
-    { icon: <Bitcoin size={28} />, label: "Cryptocurrency Prices" },
-    { icon: <Wallet size={28} />, label: "MetaMask Wallet" },
+    { icon: <Home />, path: "/home", label: "Home" },
+    {
+      icon: <AreaChart size={28} />,
+      path: "/population",
+      label: "Graph Population",
+    },
+    {
+      icon: <Bitcoin size={28} />,
+      path: "/crypto-currency",
+      label: "Cryptocurrency Prices",
+    },
+    { icon: <Wallet size={28} />, path: "/wallet", label: "MetaMask Wallet" },
   ];
 
   const options = [
@@ -73,13 +83,15 @@ export const SideBar = () => {
           </div>
           <div className="mt-8 space-y-4 cursor-pointer">
             {menuItems.map((item) => (
-              <div
+              <NavLink
+                to={item.path}
                 key={item.label}
-                className={`flex gap-2 items-center w-full h-10  text-3xl text-gray-400 hover:bg-slate-300/25 rounded-md transition-width duration-300 ease-linear ${
-                  isExpanded
-                    ? "w-full justify-center"
-                    : " pl-3 w-32 justify-start gap-5"
-                }`}
+                className={cn(
+                  "flex gap-2 items-center w-full h-10 text-3xl text-gray-400 hover:bg-slate-300/25 rounded-md transition-width duration-300 ease-linear",
+
+                  isExpanded ? "justify-center" : "pl-3 justify-start gap-5",
+                  location.pathname === item.path ? "bg-slate-300/25 text-white" : ""
+                )}
               >
                 {item.icon}
                 {isExpanded ? (
@@ -87,7 +99,7 @@ export const SideBar = () => {
                 ) : (
                   <div className="w-full text-sm">{item.label}</div>
                 )}
-              </div>
+              </NavLink>
             ))}
           </div>
         </div>
@@ -199,3 +211,5 @@ export const SideBar = () => {
     </>
   );
 };
+
+export default SideBar;

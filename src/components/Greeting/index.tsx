@@ -8,6 +8,9 @@ const Greeting = () => {
     return Object.values(ROUTE).includes(route);
   };
 
+  const pathname = location.pathname.slice(1);
+  const formattedPathname = pathname.replace(/-/g, " ");
+
   return (
     <div className="p-10 bg-zinc-800 text-white">
       {isRouteExists(location.pathname as Route) ? (
@@ -18,12 +21,14 @@ const Greeting = () => {
           </div>
           <h5 className="text-3xl">
             Welcome to{" "}
-            <span className="text-lime-500">{location.pathname.slice(1)}</span>
+            <span className="text-lime-500 capitalize">
+              {formattedPathname}
+            </span>
           </h5>
         </>
       ) : (
         <div className="w-full h-screen">
-            <p>Page not found</p>
+          <p>Page not found</p>
         </div>
       )}
     </div>
