@@ -1,5 +1,4 @@
 import { CandlestickChart, DollarSign, GroupIcon, User } from "lucide-react";
-import Chart from "react-apexcharts";
 import { HomeCard } from "./HomeCard";
 
 const Home = () => {

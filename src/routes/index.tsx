@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ROUTE from "../constants/routes";
+
 import { CryptoCurrency, Home, Population, Wallet } from "../components";
 
 const ApplicationRoutes: FC = () => {
