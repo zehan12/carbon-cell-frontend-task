@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import {
   AreaChart,
   Bell,
@@ -41,6 +42,12 @@ const SideBar = () => {
     { name: "Support", icon: HelpCircle, current: false },
     { name: "Settings", icon: Settings, current: false },
   ];
+
+  const handleUnhandledFeatures = () => {
+    return toast("Feature not implemented!", {
+      icon: "⚠️",
+    });
+  };
 
   return (
     <>
@@ -90,7 +97,9 @@ const SideBar = () => {
                   "flex gap-2 items-center w-full h-10 text-3xl text-gray-400 hover:bg-slate-300/25 rounded-md transition-width duration-300 ease-linear",
 
                   isExpanded ? "justify-center" : "pl-3 justify-start gap-5",
-                  location.pathname === item.path ? "bg-slate-300/25 text-white" : ""
+                  location.pathname === item.path
+                    ? "bg-slate-300/25 text-white"
+                    : ""
                 )}
               >
                 {item.icon}
@@ -107,6 +116,7 @@ const SideBar = () => {
           <div className="flex flex-col gap-4 p-2 text-gray-300 text-md">
             {options.map((item) => (
               <div
+                onClick={handleUnhandledFeatures}
                 key={item.name}
                 className={cn(
                   "flex justify-between cursor-pointer rounded-md hover:bg-zinc-600 p-2",
