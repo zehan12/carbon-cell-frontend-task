@@ -7,7 +7,6 @@ import { METAMASK_EXTENSION_URL } from "../../constants/api";
 
 const Wallet: FC = () => {
   const [currentAccount, setCurrentAccount] = useState<string | null>(null);
-  const [error, setError] = useState<unknown | null>(null);
   const buttonText: string = currentAccount
     ? "Disconnect Wallet"
     : "Connect Wallet";
@@ -57,7 +56,6 @@ const Wallet: FC = () => {
         setCurrentAccount(accounts[0]);
         toast.success("wallet connected");
       } catch (error: unknown) {
-        setError(error);
         toast.error("No authorized account found!");
       }
     }
@@ -96,7 +94,6 @@ const Wallet: FC = () => {
         </p>
       </div>
       {currentAccount && <WalletDetailCard currentAccount={currentAccount} />}
-      <div>{error ? <p>No authorized account found!</p> : null}</div>
     </div>
   );
 };
