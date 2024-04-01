@@ -2,15 +2,23 @@ import { FC, useEffect, useState } from "react";
 import { fetchPopulationData } from "../../services/api";
 import ReactApexChart from "react-apexcharts";
 
+interface PopulationData {
+  "ID Nation": string;
+  Nation: string;
+  "ID Year": number;
+  Year: string;
+  Population: number;
+  "Slug Nation": string;
+}
+
 const Population: FC = () => {
-  const [data, setData] = useState([]);
-  const [chartData, setChartData] = useState([]);
+  const [data, setData] = useState<PopulationData[]>([]);
+  const [chartData, setChartData] = useState<{ x: string; y: number }[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchPopulationGraphData = async () => {
       const data = await fetchPopulationData();
-      console.log(data);
       return setData(data);
     };
     fetchPopulationGraphData();
@@ -19,7 +27,7 @@ const Population: FC = () => {
   useEffect(() => {
     setLoading(true);
     if (data) {
-      const formattedData: any = data.map((entry: any) => ({
+      const formattedData = data.map((entry) => ({
         x: entry.Year,
         y: entry.Population,
       }));
@@ -78,7 +86,7 @@ const Population: FC = () => {
       ) : (
         <ReactApexChart
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+          // @ts-expect-error
           options={chartOptions}
           series={[
             {

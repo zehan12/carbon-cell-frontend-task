@@ -12,7 +12,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { cn } from "../../utils/general.utils";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const SideBar = () => {
   const location = useLocation();
@@ -205,13 +205,13 @@ const SideBar = () => {
             <ul className="font-medium flex flex-col justify-center gap-3 p-4 md:p-0 mt-4 border rounded-lg bg-gray-900 border-gray-700">
               {menuItems.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href="#"
+                  <Link
+                    to={item.path}
                     className="flex items-center gap-3 py-2 pl-3 pr-4 hover:bg-zinc-600 text-white rounded"
                     aria-current="page"
                   >
                     {item.icon} {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
