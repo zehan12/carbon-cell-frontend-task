@@ -20,15 +20,15 @@ import ApplicationRoutes from "./routes";
 
 const App = () => {
   return (
-    <>
-      <div className="flex flex-col md:flex-row bg-zinc-900">
+    <div>
+      <div className="overflow-hidden md:overflow-visible lg:overflow-visible flex flex-col md:flex-row bg-zinc-800">
         <Sidebar />
         <div className="w-full flex flex-col">
           <Greeting />
           <ApplicationRoutes />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
