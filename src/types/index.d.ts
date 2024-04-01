@@ -39,3 +39,15 @@ interface EthereumWindow extends Window {
     ) => void;
   };
 }
+
+interface MenuItem {
+  icon: JSX.Element;
+  path: string;
+  label: string;
+}
+
+interface MobileMenuProps {
+  isMobileMenuOpen: boolean;
+  setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  menuItems: MenuItem[];
+}

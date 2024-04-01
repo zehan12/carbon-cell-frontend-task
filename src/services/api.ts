@@ -1,5 +1,5 @@
 import axios from "axios";
-import { POPULATION_API } from "../constants/api";
+import { CRYPTO_PRICE_API, POPULATION_API } from "../constants/api";
 
 const fetchPopulationData = async () => {
   try {
@@ -11,4 +11,14 @@ const fetchPopulationData = async () => {
   }
 };
 
-export { fetchPopulationData };
+const fetchCryptoPrice = async () => {
+  try {
+    const response = await axios.get(CRYPTO_PRICE_API);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching population data:", error);
+    return null;
+  }
+};
+
+export { fetchPopulationData, fetchCryptoPrice };
