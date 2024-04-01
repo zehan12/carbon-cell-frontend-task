@@ -31,7 +31,7 @@ const SideBar = () => {
     {
       icon: <Bitcoin size={28} />,
       path: "/crypto-currency",
-      label: "Cryptocurrency Prices",
+      label: "Crypto Currency Prices",
     },
     { icon: <Wallet size={28} />, path: "/wallet", label: "MetaMask Wallet" },
   ];

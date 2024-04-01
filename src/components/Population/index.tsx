@@ -19,7 +19,7 @@ const Population: FC = () => {
   useEffect(() => {
     setLoading(true);
     if (data) {
-      const formattedData = data.map((entry: any) => ({
+      const formattedData: any = data.map((entry: any) => ({
         x: entry.Year,
         y: entry.Population,
       }));
@@ -39,14 +39,19 @@ const Population: FC = () => {
     dataLabels: {
       enabled: false,
     },
+    markers: {
+      colors: "#7fdb6a",
+    },
     stroke: {
       curve: "smooth",
+      colors: ["#7fdb6a"],
     },
     title: {
       text: "Population Trend Over Years",
       align: "left",
       style: {
         color: "#ffffff",
+        font: "40px",
       },
     },
     xaxis: {
@@ -72,6 +77,8 @@ const Population: FC = () => {
         <div>Loading...</div>
       ) : (
         <ReactApexChart
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           options={chartOptions}
           series={[
             {
