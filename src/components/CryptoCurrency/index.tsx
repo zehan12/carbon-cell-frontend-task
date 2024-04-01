@@ -2,21 +2,6 @@ import { useEffect, useState } from "react";
 import { CryptoLoading } from "./CryptoLoding";
 import { CryptoCard } from "./CyptoCard";
 
-interface CryptoData {
-  chartName: string;
-  disclaimer: string;
-  time: {
-    updated: string;
-  };
-  bpi: {
-    [key: string]: {
-      code: string;
-      symbol: string;
-      rate_float: number;
-    };
-  };
-}
-
 const CryptoCurrency = () => {
   const [crypto, setCrypto] = useState<CryptoData | null>(null);
   const [loading, setLoading] = useState(false);

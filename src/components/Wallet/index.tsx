@@ -5,18 +5,6 @@ import { cn } from "../../utils/general.utils";
 import { WalletDetailCard } from "./WalletDetailCard";
 import { METAMASK_EXTENSION_URL } from "../../constants/api";
 
-interface EthereumWindow extends Window {
-  ethereum?: {
-    selectedAddress: string;
-    request: (options: { method: string }) => Promise<string[]>;
-    on: (eventName: string, handler: (accounts: string[]) => void) => void;
-    removeListener: (
-      eventName: string,
-      handler: (accounts: string[]) => void
-    ) => void;
-  };
-}
-
 const Wallet: FC = () => {
   const [currentAccount, setCurrentAccount] = useState<string | null>(null);
   const [error, setError] = useState<unknown | null>(null);

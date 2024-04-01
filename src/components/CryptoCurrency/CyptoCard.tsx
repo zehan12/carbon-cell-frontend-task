@@ -1,11 +1,5 @@
 import CountUp from "react-countup";
 
-export interface CryptoCardProps {
-  code: string;
-  floatRate: number;
-  symbol: string;
-}
-
 export const CryptoCard = ({ code, floatRate, symbol }: CryptoCardProps) => {
   return (
     <div key={code} className="bg-white rounded-3xl border shadow-xl p-8 w-80">

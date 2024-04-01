@@ -2,15 +2,6 @@ import { FC, useEffect, useState } from "react";
 import { fetchPopulationData } from "../../services/api";
 import ReactApexChart from "react-apexcharts";
 
-interface PopulationData {
-  "ID Nation": string;
-  Nation: string;
-  "ID Year": number;
-  Year: string;
-  Population: number;
-  "Slug Nation": string;
-}
-
 const Population: FC = () => {
   const [data, setData] = useState<PopulationData[]>([]);
   const [chartData, setChartData] = useState<{ x: string; y: number }[]>([]);
