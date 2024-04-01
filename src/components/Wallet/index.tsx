@@ -26,7 +26,6 @@ const Wallet: FC = () => {
         setCurrentAccount(null);
       } else {
         setCurrentAccount(accounts[0]);
-        console.log(accounts, "value");
       }
     };
 

@@ -11,7 +11,6 @@ const CryptoCurrency = () => {
     try {
       setLoading(true);
       const data = await fetchCryptoPrice();
-      console.log(data);
       setCrypto(data);
       setLoading(false);
     } catch (error) {
